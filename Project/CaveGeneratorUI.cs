@@ -1,11 +1,14 @@
 ﻿using System.Linq;
+using System.Text;
 using UnityEngine;
-using UnityEditor;
 using AKSaigyouji.Modules;
 using AKSaigyouji.Modules.Outlines;
 using AKSaigyouji.Modules.HeightMaps;
 using AKSaigyouji.Modules.MapGeneration;
-using System.Text;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace AKSaigyouji.CaveGeneration
 {   
@@ -30,6 +33,8 @@ namespace AKSaigyouji.CaveGeneration
 
         [Tooltip("Select to automatically randomize the seeds of components that use seed values.")]
         [SerializeField] bool randomize = true;
+
+#if UNITY_EDITOR
 
         /// <summary>
         /// Generate a three tier cave: a distinct mesh will be produced for the floor, walls and ceiling. 
@@ -122,5 +127,7 @@ namespace AKSaigyouji.CaveGeneration
             threeTierCaveConfig = new ThreeTierCaveConfiguration();
             rockCaveConfig = new RockCaveConfiguration();
         }
+
+#endif
     } 
 }
